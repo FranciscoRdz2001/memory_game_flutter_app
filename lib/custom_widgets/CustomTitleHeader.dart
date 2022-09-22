@@ -3,11 +3,11 @@ import 'package:memoram_app/styles/styles.dart';
 
 class CustomTitleHeader extends StatelessWidget {
 
-  String title;
-  String subTitle;
-  Color color;
+  final String title;
+  final String subTitle;
+  final Color color;
 
-  CustomTitleHeader({@required this.title, @required this.subTitle, @required this.color});
+  const CustomTitleHeader({required this.title, required this.subTitle, required this.color});
 
   @override
   Widget build(BuildContext context) {

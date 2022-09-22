@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
                                 ..imagesToShow = 2
                                 ..imagesType = categories.list[x].imageType;
                               await _game.getImagesFromFolder(categories.list[x].path);
-                              if(_game.images != null && _game.images.length > 0){
+                              if(_game.images != null && _game.images!.length > 0){
                                 _game.restart();
                                 Navigator.of(context).push(MaterialPageRoute(builder: (_) => GamePage()));
                               }

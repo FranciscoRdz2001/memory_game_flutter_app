@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget{
 
-  Size size;
-  MaterialColor enabledColor;
-  IconData icon;
-  Function() onPressEvent;
-  bool isTrue;
-  String text;
+  final Size size;
+  final MaterialColor enabledColor;
+  final IconData icon;
+  final Function() onPressEvent;
+  final bool isTrue;
+  final String text;
 
-  CustomButton({@required this.size, @required this.isTrue, @required this.enabledColor, @required this.icon, @required this.text, @required this.onPressEvent});
+  CustomButton({required this.size, required this.isTrue, required this.enabledColor, required this.icon, required this.text, required this.onPressEvent});
 
   @override
   Widget build(BuildContext context) => GestureDetector(
@@ -22,7 +22,7 @@ class CustomButton extends StatelessWidget{
       transformAlignment: FractionalOffset.center,
       alignment: FractionalOffset.center,
       decoration: BoxDecoration(
-        color: isTrue == null || !isTrue ? Colors.grey[100] : enabledColor[300].withOpacity(0.35),
+        color: isTrue == null || !isTrue ? Colors.grey[100] : enabledColor[300]!.withOpacity(0.35),
         borderRadius: BorderRadius.all(Radius.circular(15))
       ),
       duration: Duration(milliseconds: 800),

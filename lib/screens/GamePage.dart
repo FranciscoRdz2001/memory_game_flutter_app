@@ -24,16 +24,16 @@ class _GamePageState extends State<GamePage>{
     _game.context = context;
 
     Widget _showData(){
-      return _game.images.length == 0 ? CircularProgressIndicator() : Container(
+      return _game.images!.length == 0 ? CircularProgressIndicator() : Container(
         height: _size.height * 0.28,
         width: _size.width,
         child: GridView.builder(
           shrinkWrap: false,
           physics: NeverScrollableScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: _game.images.length % 2 == 0 ? _game.images.length ~/ 2 : _game.images.length ~/ 3 , mainAxisSpacing: _size.height * 0.006, mainAxisExtent: _size.height * 0.1),
-          itemCount: _game.images.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: _game.images!.length % 2 == 0 ? _game.images!.length ~/ 2 : _game.images!.length ~/ 3 , mainAxisSpacing: _size.height * 0.006, mainAxisExtent: _size.height * 0.1),
+          itemCount: _game.images!.length,
           itemBuilder: (_, x){
-            ImageModel animal = _game.images[x];
+            ImageModel animal = _game.images![x];
             return GestureDetector(
               onTap: (){
                 switch (_game.gameState) {
@@ -44,7 +44,7 @@ class _GamePageState extends State<GamePage>{
                     CustomSnackBar(context: context, color: Colors.red, message: "¡No se ha iniciado el juego!");
                     break;
                   default:
-                    if(_game.images[x].isSelected) CustomSnackBar(context: context, color: Colors.red, message: "¡Este ya ha sido seleccionado!");
+                    if(_game.images![x].isSelected) CustomSnackBar(context: context, color: Colors.red, message: "¡Este ya ha sido seleccionado!");
                     else if(_game.checkState == CheckStates.comparing) CustomSnackBar(context: context, color: Colors.red, message: "¡Se estan comparando los resultados anteriores!");
                     else _game.addImageToList(x);
                     break;
@@ -70,7 +70,7 @@ class _GamePageState extends State<GamePage>{
         physics: BouncingScrollPhysics(),
         child: Column(
           children: [
-            CustomTitleHeader(title: "Movimientos ${_game.movements}", subTitle: "Pares ${(_game.correctImages == null ? 0 : _game.correctImages ~/ 2)}", color: _game.gameState == GameStates.notStarted ? Colors.blue : _game.comparisonStatus == ComparisonStatus.correct ? Colors.green : _game.comparisonStatus == ComparisonStatus.incorrect ? Colors.red : Colors.blue),
+            CustomTitleHeader(title: "Movimientos ${_game.movements}", subTitle: "Pares ${(_game.correctImages == null ? 0 : _game.correctImages! ~/ 2)}", color: _game.gameState == GameStates.notStarted ? Colors.blue : _game.comparisonStatus == ComparisonStatus.correct ? Colors.green : _game.comparisonStatus == ComparisonStatus.incorrect ? Colors.red : Colors.blue),
             Padding(
               padding: EdgeInsets.only(bottom: _size.height * 0.05, left: _size.width * 0.05, right: _size.width * 0.05),
               child: Center(
@@ -78,7 +78,7 @@ class _GamePageState extends State<GamePage>{
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text((_game.correctImages == null ? 0 : _game.correctImages ~/ 2).toString(), style: TextStyles.title, textAlign: TextAlign.center,),
+                    Text((_game.correctImages == null ? 0 : _game.correctImages! ~/ 2).toString(), style: TextStyles.title, textAlign: TextAlign.center,),
                     SizedBox(height: _size.height * 0.005),
                     Text("Empieza a seleccionar imagenes!", style: TextStyles.body, textAlign: TextAlign.center),
                     _showData(),

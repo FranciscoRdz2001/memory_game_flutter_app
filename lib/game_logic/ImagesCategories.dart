@@ -24,6 +24,6 @@ class Category{
   MaterialColor color;
   ImagesType imageType;
 
-  Category({@required this.path, @required this.title, @required this.description, @required this.icon, @required this.color, @required this.imageType});
+  Category({required this.path, required this.title, required this.description, required this.icon, required this.color, required this.imageType});
 
 }

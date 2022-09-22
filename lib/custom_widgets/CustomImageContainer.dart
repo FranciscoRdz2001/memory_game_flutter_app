@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 class CustomImageContainer extends StatefulWidget {
   
   // Variables
-  String animalImage;
-  Function(CustomImageContainer container) onPressEvent;
+  final String animalImage;
+  final Function(CustomImageContainer container) onPressEvent;
 
-  CustomImageContainer({@required this.animalImage, @required this.onPressEvent});
+  const CustomImageContainer({required this.animalImage, required this.onPressEvent});
 
 
   @override
@@ -21,7 +21,7 @@ class _CustomImageContainerState extends State<CustomImageContainer> with Ticker
   double _animationValue = 0;
 
 
-  String _currentImage;
+  String? _currentImage;
 
   final String _questionImage = "images/questionAndCorrect/question.png";
   bool canPress = true;
@@ -51,7 +51,7 @@ class _CustomImageContainerState extends State<CustomImageContainer> with Ticker
         transformAlignment: FractionalOffset.center,
         alignment: FractionalOffset.center,
         transform: Matrix4.identity()..setEntry(3, 2, 0.002)..rotateY(pi * _animationValue),
-        child: Image.asset(_currentImage),
+        child: Image.asset(_currentImage!),
         curve: Curves.easeInCirc,
         onEnd: (){
           canPress = true;

@@ -14,23 +14,23 @@ class GameLogic with ChangeNotifier{
   final Random random = new Random();
   final int numOfRepeatImages = 2;
   
-  List<String> _imagesDirection;
-  List<ImageModel> _selectedImages;
+  late List<String> _imagesDirection;
+  late List<ImageModel> _selectedImages;
 
   BuildContext context;
-  GameStates gameState;
-  CheckStates checkState;
-  ImagesType imagesType;
+  GameStates? gameState;
+  CheckStates? checkState;
+  ImagesType? imagesType;
 
-  ComparisonStatus comparisonStatus;
-  List<ImageModel> images;
+  ComparisonStatus? comparisonStatus;
+  List<ImageModel>? images;
   int imagesToShow = 2;
-  int movements;
-  int correctImages;
+  late int movements;
+  int? correctImages;
 
   get imagesQuantity => _imagesDirection.length;
 
-  GameLogic({@required this.context}){
+  GameLogic({required this.context}){
     _setDefaultData();
   }
 
@@ -68,7 +68,7 @@ class GameLogic with ChangeNotifier{
 
   void _generateRandomImages(){
     List<int> availableIndex = [];
-    Map<String, String> categoriesInformation;
+    late Map<String, String> categoriesInformation;
     switch (imagesType) {
       case ImagesType.animals:
         categoriesInformation = new Information().animals;
@@ -78,7 +78,7 @@ class GameLogic with ChangeNotifier{
         break;
       default:
     }
-    images..length = imagesToShow;
+    images!..length = imagesToShow;
 
     if(_imagesDirection.length > 0){
       for(int x = 0; x < imagesToShow; x++) availableIndex.add(x);
@@ -87,7 +87,7 @@ class GameLogic with ChangeNotifier{
           int rndIndex = availableIndex.length == 1 ? 0 : random.nextInt(availableIndex.length - 1);
           for(int j = 0; j < categoriesInformation.length; j++)
             if(_imagesDirection[x].contains(categoriesInformation.keys.elementAt(j)))
-            images[availableIndex[rndIndex]] = new ImageModel(name: _imagesDirection[x], information: categoriesInformation.values.elementAt(j));
+            images![availableIndex[rndIndex]] = new ImageModel(name: _imagesDirection[x], information: categoriesInformation.values.elementAt(j));
           availableIndex.remove(availableIndex[rndIndex]);
         }
       }
@@ -96,9 +96,9 @@ class GameLogic with ChangeNotifier{
   }
 
   void addImageToList(int index) async{
-    _selectedImages.add(images[index]);
-    images[index].isSelected = true;
-    images[index].completeAnimation();
+    _selectedImages.add(images![index]);
+    images![index].isSelected = true;
+    images![index].completeAnimation();
     _selectedImages[_selectedImages.length - 1].currentImage = _selectedImages[_selectedImages.length - 1].name;
     if(_selectedImages.length >= numOfRepeatImages) await compareAndCheckImages();
     await Future.delayed(Duration(milliseconds: 150), () async => notifyListeners());
@@ -110,8 +110,8 @@ class GameLogic with ChangeNotifier{
     checkState = CheckStates.comparing;
       if(compareImages()){
         comparisonStatus = ComparisonStatus.correct;
-        correctImages += _selectedImages.length;
-        if(correctImages >= images.length){
+        correctImages = correctImages! + _selectedImages.length;
+        if(correctImages! >= images!.length){
           gameState = GameStates.won;
           CustomAlertMessage.showMyDialog(context, [Text("Si quieres volver a jugar, reinicia el juego.", style: TextStyles.body.copyWith(fontSize: 15), textAlign: TextAlign.center, overflow: TextOverflow.visible)], "¡Has ganado el juego!");
         } 

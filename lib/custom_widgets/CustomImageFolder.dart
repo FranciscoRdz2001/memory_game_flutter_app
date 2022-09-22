@@ -4,10 +4,10 @@ import 'package:memoram_app/styles/styles.dart';
 
 class CustomImageFolder extends StatelessWidget {
 
-  Function() onTapEvent;
-  Category category;
-  Color color;
-  CustomImageFolder({@required this.category, @required this.onTapEvent, @required this.color});
+  final Function() onTapEvent;
+  final Category category;
+  final Color color;
+  const CustomImageFolder({required this.category, required this.onTapEvent, required this.color});
 
   @override
   Widget build(BuildContext context) {

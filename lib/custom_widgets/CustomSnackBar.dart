@@ -1,11 +1,9 @@
 
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomSnackBar{
 
-  CustomSnackBar({@required BuildContext context, @required MaterialColor color, @required String message}){
+  CustomSnackBar({required BuildContext context, required MaterialColor color, required String message}){
     ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       backgroundColor: color[200],
