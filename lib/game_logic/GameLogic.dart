@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:memoram_app/Information/ImagesInformation.dart';
-import 'package:memoram_app/custom_widgets/CustomAlertMessage.dart';
+import 'package:memoram_app/widgets/CustomAlertMessage.dart';
 import 'package:memoram_app/game_logic/AnimalModel.dart';
 import 'package:memoram_app/styles/styles.dart';
 import 'GameStates.dart';

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:memoram_app/game_logic/GameLogic.dart';
 import 'package:memoram_app/screens/HomePage.dart';
 import 'package:provider/provider.dart';
-import 'screens/HomePage.dart';
  
 void main() => runApp(MyApp());
  
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white
+          scaffoldBackgroundColor: Color.fromARGB(255, 250, 250, 250)
         ),
         title: 'Memorama',
         home: HomePage(),

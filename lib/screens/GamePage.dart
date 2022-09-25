@@ -1,12 +1,13 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:memoram_app/custom_widgets/CustomButton.dart';
-import 'package:memoram_app/custom_widgets/CustomSnackBar.dart';
-import 'package:memoram_app/custom_widgets/CustomTitleHeader.dart';
+import 'package:memoram_app/widgets/CustomButton.dart';
+import 'package:memoram_app/widgets/CustomSnackBar.dart';
+import 'package:memoram_app/widgets/CustomTitleHeader.dart';
 import 'package:memoram_app/game_logic/AnimalModel.dart';
 import 'package:memoram_app/game_logic/GameLogic.dart';
 import 'package:memoram_app/game_logic/GameStates.dart';
 import 'package:memoram_app/styles/styles.dart';
+import 'package:memoram_app/utils/responsive.dart';
 import 'package:provider/provider.dart';
 
 class GamePage extends StatefulWidget {
@@ -21,6 +22,9 @@ class _GamePageState extends State<GamePage>{
 
     final Size _size = MediaQuery.of(context).size;
     final GameLogic _game = Provider.of<GameLogic>(context);
+
+    final ResponsiveUtil resp = ResponsiveUtil.of(context);
+    
     _game.context = context;
 
     Widget _showData(){
@@ -78,7 +82,7 @@ class _GamePageState extends State<GamePage>{
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text((_game.correctImages == null ? 0 : _game.correctImages! ~/ 2).toString(), style: TextStyles.title, textAlign: TextAlign.center,),
+                    Text((_game.correctImages == null ? 0 : _game.correctImages! ~/ 2).toString(), style: TextStyles.w700(resp.wp(1)), textAlign: TextAlign.center,),
                     SizedBox(height: _size.height * 0.005),
                     Text("Empieza a seleccionar imagenes!", style: TextStyles.body, textAlign: TextAlign.center),
                     _showData(),
