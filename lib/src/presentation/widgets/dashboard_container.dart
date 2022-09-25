@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/utils/responsive.dart';
 
-import '../../styles/styles.dart';
+import '../../core/utils/styles.dart';
 
 
 class DashboardContainer extends StatelessWidget {

@@ -4,7 +4,7 @@ import '../../data/models/dashboard_item_model.dart';
 import '../widgets/custom_title_header.dart';
 import '../../game_logic/game_logic.dart';
 import '../../game_logic/images_categories.dart';
-import '../../styles/styles.dart';
+import '../../core/utils/styles.dart';
 import '../../core/utils/responsive.dart';
 import '../widgets/category_container.dart';
 import '../widgets/dashboard_container.dart';

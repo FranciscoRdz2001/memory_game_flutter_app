@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:memoram_app/src/core/utils/responsive.dart';
 
 import '../Information/images_information.dart';
-import '../styles/styles.dart';
+import '../core/utils/styles.dart';
 import '../presentation/widgets/custom_alert.dart';
 import '../data/models/animal_model.dart';
 import 'game_states.dart';

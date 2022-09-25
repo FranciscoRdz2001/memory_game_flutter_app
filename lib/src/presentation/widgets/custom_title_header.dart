@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../styles/styles.dart';
+import '../../core/utils/styles.dart';
 import '../../core/utils/responsive.dart';
 
 class CustomTitleHeader extends StatelessWidget {

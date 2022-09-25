@@ -1,12 +1,13 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:memoram_app/src/core/utils/constants.dart';
 
 class CategoryInfo{
 
   final List<Category> list = [
-    Category(path: "animals", title: "Animales", description: "Aprende mas de los animales con las siguientes imagenes.", icon: "lionIcon", color: Colors.red, imageType: ImagesType.animals),
-    Category(path: "states", title: "Estados", description: "Un poco de información sobre los estados.", icon: "iceIcon", color: Colors.blue, imageType: ImagesType.states),
+    Category(path: animalsImagesPath, title: "Animales", description: "Aprende mas de los animales con las siguientes imagenes.", icon: "lionIcon", color: Colors.red, imageType: ImagesType.animals),
+    Category(path: statesImagesPath, title: "Estados", description: "Un poco de información sobre los estados.", icon: "iceIcon", color: Colors.blue, imageType: ImagesType.states),
   ];
 }
 

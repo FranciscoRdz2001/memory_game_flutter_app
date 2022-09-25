@@ -6,7 +6,7 @@ import '../widgets/custom_title_header.dart';
 import '../../data/models/animal_model.dart';
 import '../../game_logic/game_logic.dart';
 import '../../game_logic/game_states.dart';
-import '../../styles/styles.dart';
+import '../../core/utils/styles.dart';
 import '../../core/utils/responsive.dart';
 import 'package:provider/provider.dart';
 

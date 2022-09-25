@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../game_logic/images_categories.dart';
-import '../../styles/styles.dart';
+import '../../core/utils/styles.dart';
 import '../../core/utils/responsive.dart';
 
 class CustomImageFolder extends StatelessWidget {

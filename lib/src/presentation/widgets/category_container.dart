@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:memoram_app/src/core/utils/constants.dart';
 import '../../game_logic/images_categories.dart';
-import '../../styles/styles.dart';
+import '../../core/utils/styles.dart';
 import '../../core/utils/responsive.dart';
 
 
@@ -28,7 +29,7 @@ class CategoryContainer extends StatelessWidget {
               color: Colors.grey[100],
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Image.asset("images/icons/${category.icon}.png", fit: BoxFit.contain)
+            child: Image.asset('$iconsImagesPath/${category.icon}.png', fit: BoxFit.contain)
           )
         ),
         SizedBox(height: resp.hp(1)),
