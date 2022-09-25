@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:memoram_app/game_logic/GameLogic.dart';
-import 'package:memoram_app/screens/HomePage.dart';
 import 'package:provider/provider.dart';
+
+import 'src/game_logic/game_logic.dart';
+import 'src/presentation/views/home_page.dart';
  
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
  
 class MyApp extends StatelessWidget {
+  
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
+    return ChangeNotifierProvider<GameLogic>(
       create: (BuildContext context) => GameLogic(context: context),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          scaffoldBackgroundColor: Color.fromARGB(255, 250, 250, 250)
+          scaffoldBackgroundColor: const Color.fromARGB(255, 250, 250, 250)
         ),
         title: 'Memorama',
-        home: HomePage(),
+        home: const HomePage(),
       ),
     );
   }

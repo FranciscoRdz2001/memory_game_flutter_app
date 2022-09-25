@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:memoram_app/game_logic/ImagesCategories.dart';
-import 'package:memoram_app/styles/styles.dart';
-import 'package:memoram_app/utils/responsive.dart';
+import '../../game_logic/images_categories.dart';
+import '../../styles/styles.dart';
+import '../../core/utils/responsive.dart';
 
 class CustomImageFolder extends StatelessWidget {
 

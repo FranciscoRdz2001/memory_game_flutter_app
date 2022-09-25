@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:memoram_app/styles/styles.dart';
-import 'package:memoram_app/utils/responsive.dart';
+import '../../styles/styles.dart';
+import '../../core/utils/responsive.dart';
 
 class CustomTitleHeader extends StatelessWidget {
 
@@ -8,28 +8,32 @@ class CustomTitleHeader extends StatelessWidget {
   final String subTitle;
   final Color color;
 
-  const CustomTitleHeader({required this.title, required this.subTitle, required this.color});
+  const CustomTitleHeader({ 
+    Key? key,
+    required this.title, 
+    required this.subTitle, 
+    required this.color
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
-    final Size _size = MediaQuery.of(context).size;
     final ResponsiveUtil resp = ResponsiveUtil.of(context);
 
     return AnimatedContainer(
-      duration: new Duration(milliseconds: 250),
-      height: _size.height * 0.25,
-      width: _size.width, 
+      duration: const Duration(milliseconds: 250),
+      height: resp.hp(25),
+      width: resp.width, 
+      decoration: BoxDecoration(
+        color: color.withOpacity(0.75),
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(title, textAlign: TextAlign.center, style: TextStyles.w700(resp.dp(2.85), Colors.white)),
           Text(subTitle, textAlign: TextAlign.center, style: TextStyles.w400(resp.dp(1.25), Colors.white)),
         ],
-      ),
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.75),
-        borderRadius: BorderRadius.all(Radius.circular(25)),
       ),
     );
   }

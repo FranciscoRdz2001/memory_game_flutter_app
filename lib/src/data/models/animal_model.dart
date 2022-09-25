@@ -1,6 +1,4 @@
 
-import 'package:flutter/material.dart';
-
 class ImageModel{ // Esta clase se utiliza como modelo para guardar ciertos campos de cada imagen
 
   String name;

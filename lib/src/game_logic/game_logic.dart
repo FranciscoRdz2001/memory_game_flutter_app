@@ -1,13 +1,14 @@
 import 'dart:convert';
 import 'dart:math';
-import 'package:flutter/material.dart';
-import 'package:memoram_app/Information/ImagesInformation.dart';
-import 'package:memoram_app/widgets/CustomAlertMessage.dart';
-import 'package:memoram_app/game_logic/AnimalModel.dart';
-import 'package:memoram_app/styles/styles.dart';
-import 'GameStates.dart';
-import 'ImagesCategories.dart';
 
+import 'package:flutter/material.dart';
+
+import '../Information/images_information.dart';
+import '../styles/styles.dart';
+import '../presentation/widgets/custom_alert.dart';
+import '../data/models/animal_model.dart';
+import 'game_states.dart';
+import 'images_categories.dart';
 
 class GameLogic with ChangeNotifier{
   

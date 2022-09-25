@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:memoram_app/models/dashboard_item_model.dart';
-import 'package:memoram_app/widgets/CustomTitleHeader.dart';
-import 'package:memoram_app/game_logic/GameLogic.dart';
-import 'package:memoram_app/game_logic/ImagesCategories.dart';
-import 'package:memoram_app/styles/styles.dart';
-import 'package:memoram_app/utils/responsive.dart';
-import 'package:memoram_app/widgets/category_container.dart';
-import 'package:memoram_app/widgets/dashboard_container.dart';
-import 'package:memoram_app/widgets/flexible_grid_view.dart';
+import 'package:memoram_app/src/core/utils/constants.dart';
+import '../../data/models/dashboard_item_model.dart';
+import '../widgets/custom_title_header.dart';
+import '../../game_logic/game_logic.dart';
+import '../../game_logic/images_categories.dart';
+import '../../styles/styles.dart';
+import '../../core/utils/responsive.dart';
+import '../widgets/category_container.dart';
+import '../widgets/dashboard_container.dart';
+import '../widgets/flexible_grid_view.dart';
 import 'package:provider/provider.dart';
 
 
@@ -38,8 +39,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
 
-    final GameLogic _game = Provider.of<GameLogic>(context);
-    _game.context = context;
+    final GameLogic game = Provider.of<GameLogic>(context);
+    game.context = context;
 
     final ResponsiveUtil resp = ResponsiveUtil.of(context);
     
@@ -64,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                     const CustomTitleHeader(
                       title: 'Educational Memory Game', 
                       subTitle: 'Start your game to start learning...', 
-                      color: Colors.blueAccent
+                      color: accent
                     ),
                     SizedBox(height: resp.separatorHeight),
                     Text('Dashboard:', textAlign: TextAlign.center, style: TextStyles.w500(resp.dp(2))),

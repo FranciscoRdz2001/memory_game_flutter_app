@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:memoram_app/utils/responsive.dart';
+import '../../core/utils/responsive.dart';
 
 
 class FlexibleGridView extends StatelessWidget {

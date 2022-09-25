@@ -1,13 +1,13 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:memoram_app/widgets/CustomButton.dart';
-import 'package:memoram_app/widgets/CustomSnackBar.dart';
-import 'package:memoram_app/widgets/CustomTitleHeader.dart';
-import 'package:memoram_app/game_logic/AnimalModel.dart';
-import 'package:memoram_app/game_logic/GameLogic.dart';
-import 'package:memoram_app/game_logic/GameStates.dart';
-import 'package:memoram_app/styles/styles.dart';
-import 'package:memoram_app/utils/responsive.dart';
+import '../widgets/custom_button.dart';
+import '../widgets/custom_snackbar.dart';
+import '../widgets/custom_title_header.dart';
+import '../../data/models/animal_model.dart';
+import '../../game_logic/game_logic.dart';
+import '../../game_logic/game_states.dart';
+import '../../styles/styles.dart';
+import '../../core/utils/responsive.dart';
 import 'package:provider/provider.dart';
 
 class GamePage extends StatefulWidget {
