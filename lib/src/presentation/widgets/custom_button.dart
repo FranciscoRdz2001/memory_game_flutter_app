@@ -9,7 +9,15 @@ class CustomButton extends StatelessWidget{
   final bool isTrue;
   final String text;
 
-  CustomButton({required this.size, required this.isTrue, required this.enabledColor, required this.icon, required this.text, required this.onPressEvent});
+  const CustomButton({
+    Key? key,
+    required this.size, 
+    required this.isTrue, 
+    required this.enabledColor, 
+    required this.icon, 
+    required this.text, 
+    required this.onPressEvent
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => GestureDetector(
@@ -20,16 +28,16 @@ class CustomButton extends StatelessWidget{
       transformAlignment: FractionalOffset.center,
       alignment: FractionalOffset.center,
       decoration: BoxDecoration(
-        color: isTrue == null || !isTrue ? Colors.grey[100] : enabledColor[300]!.withOpacity(0.35),
-        borderRadius: BorderRadius.all(Radius.circular(15))
+        color: !isTrue ? Colors.grey[100] : enabledColor[300]!.withOpacity(0.35),
+        borderRadius: const BorderRadius.all(Radius.circular(15))
       ),
-      duration: Duration(milliseconds: 800),
+      duration: const Duration(milliseconds: 800),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(text, textAlign: TextAlign.center, style: TextStyle(color: isTrue == null || !isTrue ? Colors.grey[300] : enabledColor[300], fontSize: 18, fontWeight: FontWeight.w600, fontFamily: "Simply")),
-          Icon(icon, color: isTrue == null || !isTrue ? Colors.grey[300] : enabledColor[300])
+          Text(text, textAlign: TextAlign.center, style: TextStyle(color: !isTrue ? Colors.grey[300] : enabledColor[300], fontSize: 18, fontWeight: FontWeight.w600, fontFamily: "Simply")),
+          Icon(icon, color: !isTrue ? Colors.grey[300] : enabledColor[300])
         ],
       ),
     ),

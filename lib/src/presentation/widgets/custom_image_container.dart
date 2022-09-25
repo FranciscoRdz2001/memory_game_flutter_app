@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:memoram_app/src/core/utils/responsive.dart';
 
 
 class CustomImageContainer extends StatefulWidget {
@@ -9,11 +10,16 @@ class CustomImageContainer extends StatefulWidget {
   final String animalImage;
   final Function(CustomImageContainer container) onPressEvent;
 
-  const CustomImageContainer({required this.animalImage, required this.onPressEvent});
+
+  const CustomImageContainer({
+    Key? key,
+    required this.animalImage, 
+    required this.onPressEvent
+  }) : super(key: key);
 
 
   @override
-  _CustomImageContainerState createState() => _CustomImageContainerState();
+  State<CustomImageContainer> createState() => _CustomImageContainerState();
 }
 
 class _CustomImageContainerState extends State<CustomImageContainer> with TickerProviderStateMixin {
@@ -37,27 +43,27 @@ class _CustomImageContainerState extends State<CustomImageContainer> with Ticker
   @override
   Widget build(BuildContext context) {
 
-    final Size _size = MediaQuery.of(context).size;
+    final ResponsiveUtil resp = ResponsiveUtil.of(context);
 
     return GestureDetector(
       onTap: (){
-        if(widget.onPressEvent != null) widget.onPressEvent(widget);
+        widget.onPressEvent(widget);
         canPress = false;
         setState(() => _animationValue = _endOfAnimation);
       },
       child: AnimatedContainer(
-        height: _size.height * 0.2,
-        width: _size.width * 0.35,
-        duration: Duration(milliseconds: 500),
+        height: resp.hp(20),
+        width: resp.wp(35),
+        duration: const Duration(milliseconds: 500),
         transformAlignment: FractionalOffset.center,
         alignment: FractionalOffset.center,
         transform: Matrix4.identity()..setEntry(3, 2, 0.002)..rotateY(pi * _animationValue),
-        child: Image.asset(_currentImage!),
         curve: Curves.easeInCirc,
         onEnd: (){
           canPress = true;
           setState(() => _currentImage);
         },
+        child: Image.asset(_currentImage!),
       ),
     );
   }

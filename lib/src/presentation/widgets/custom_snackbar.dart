@@ -7,9 +7,9 @@ class CustomSnackBar{
     ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       backgroundColor: color[200],
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
-      duration: Duration(milliseconds: 500),
-      content: Text('$message.', style: TextStyle(fontWeight: FontWeight.w600), textAlign: TextAlign.center),
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+      duration: const Duration(milliseconds: 500),
+      content: Text('$message.', style: const TextStyle(fontWeight: FontWeight.w600), textAlign: TextAlign.center),
       ),
     );
   }

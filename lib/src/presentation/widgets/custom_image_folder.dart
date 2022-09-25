@@ -8,7 +8,11 @@ class CustomImageFolder extends StatelessWidget {
   final Function() onTapEvent;
   final Category category;
 
-  CustomImageFolder({required this.category, required this.onTapEvent}){
+  CustomImageFolder({
+    Key? key,
+    required this.category, 
+    required this.onTapEvent
+  }) :super(key: key){
     getColors();
   }
 
