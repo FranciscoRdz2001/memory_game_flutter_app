@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:memoram_app/src/core/utils/constants.dart';
+import 'package:memoram_app/src/presentation/widgets/bubbles_painter.dart';
 import '../../core/utils/responsive.dart';
 
 import '../../core/utils/styles.dart';
