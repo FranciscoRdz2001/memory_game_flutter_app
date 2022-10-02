@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                         flex: 1,
                         child: Column(
                           children: [
-                            SizedBox(height: resp.separatorHeight),
+                            SizedBox(height: resp.separatorHeight / 2),
                             Text('Educational Memory Game', textAlign: TextAlign.center, style: TextStyles.w700(resp.dp(2.85), Colors.white)),
                             Text('Start your game to start learning...', textAlign: TextAlign.center, style: TextStyles.w400(resp.dp(1.25), Colors.white)),
                           ],

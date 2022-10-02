@@ -6,7 +6,7 @@ class TextStyles{
 
   static TextStyle _fontBase(final double size, final Color color){
     return TextStyle(
-      fontFamily: 'Montserrat',
+      fontFamily: 'OpenSans',
       fontSize: size,
       color: color
     );

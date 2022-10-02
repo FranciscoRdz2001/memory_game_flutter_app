@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-const Color accent = Color(0xff3AB0FF);
+const Color accent = Color(0xff6aaff9);
 
 List<BoxShadow> shadows = [
     BoxShadow(
-      blurRadius: 15,
-      color: Colors.grey[100]!,
+      blurRadius: 50,
+      color: Colors.grey[50]!,
       offset: const Offset(0, 15)
     )
 ];

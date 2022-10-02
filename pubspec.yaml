@@ -25,10 +25,11 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.5
+  flutter_lints: ^2.0.1
   path_provider: ^2.0.11
   provider: ^6.0.3
   flutter_launcher_icons: ^0.10.0
-  flutter_lints: ^2.0.1
+  palette_generator: ^0.3.3+2
 
 flutter_icons:
   android: "launcher_icon"
@@ -70,21 +71,21 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Montserrat
+    - family: OpenSans
       fonts:
-        - asset: assets/fonts/montserrat/Montserrat-ExtraLight.otf
+        - asset: assets/fonts/open_sans/OpenSans-Light.ttf
           weight: 100
-        - asset: assets/fonts/montserrat/Montserrat-Light.otf
+        - asset: assets/fonts/open_sans/OpenSans-Light.ttf
           weight: 200
-        - asset: assets/fonts/montserrat/Montserrat-Regular.otf
+        - asset: assets/fonts/open_sans/OpenSans-Medium.ttf
           weight: 300
-        - asset: assets/fonts/montserrat/Montserrat-Medium.otf
+        - asset: assets/fonts/open_sans/OpenSans-Regular.ttf
           weight: 400
-        - asset: assets/fonts/montserrat/Montserrat-SemiBold.otf
+        - asset: assets/fonts/open_sans/OpenSans-Regular.ttf
           weight: 500
-        - asset: assets/fonts/montserrat/Montserrat-Bold.otf
+        - asset: assets/fonts/open_sans/OpenSans-SemiBold.ttf
           weight: 600
-        - asset: assets/fonts/montserrat/Montserrat-ExtraBold.otf
+        - asset: assets/fonts/open_sans/OpenSans-Bold.ttf
           weight: 700
   #
   # For details regarding fonts from package dependencies,
