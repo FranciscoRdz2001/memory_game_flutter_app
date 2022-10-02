@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memoram_app/src/core/utils/constants.dart';
 import '../../core/utils/responsive.dart';
 
 import '../../core/utils/styles.dart';
@@ -25,14 +26,15 @@ class DashboardContainer extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: bgColor,
-        borderRadius: BorderRadius.circular(10)
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: shadows
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(title, textAlign: TextAlign.center, style: TextStyles.w400(resp.dp(1.25), Colors.white)),
-          Text(value, textAlign: TextAlign.center, style: TextStyles.w700(resp.dp(2), Colors.white)),
+          Text(title, textAlign: TextAlign.center, style: TextStyles.w400(resp.dp(1.25))),
+          Text(value, textAlign: TextAlign.center, style: TextStyles.w700(resp.dp(2))),
         ],
       ),
     );

@@ -12,24 +12,24 @@ class TextStyles{
     );
   }
 
-  static TextStyle w700(final double size, [Color color = Colors.black])
+  static TextStyle w700(final double size, [Color color = const Color(0xff282a40)])
     => _fontBase(size, color = color).copyWith(fontWeight: FontWeight.w700);
 
-  static TextStyle w600(final double size, [Color color = Colors.black])
+  static TextStyle w600(final double size, [Color color = const Color(0xff282a40)])
     => _fontBase(size, color = color).copyWith(fontWeight: FontWeight.w600);
 
-  static TextStyle w500(final double size, [Color color = Colors.black])
+  static TextStyle w500(final double size, [Color color = const Color(0xff282a40)])
     => _fontBase(size, color = color).copyWith(fontWeight: FontWeight.w500);
 
-  static TextStyle w400(final double size, [Color color = Colors.black])
+  static TextStyle w400(final double size, [Color color = const Color(0xff282a40)])
     => _fontBase(size, color = color).copyWith(fontWeight: FontWeight.w400);
 
-  static TextStyle w300(final double size, [Color color = Colors.black])
+  static TextStyle w300(final double size, [Color color = const Color(0xff282a40)])
     => _fontBase(size, color = color).copyWith(fontWeight: FontWeight.w300);
 
-  static TextStyle w200(final double size, [Color color = Colors.black])
+  static TextStyle w200(final double size, [Color color = const Color(0xff282a40)])
     => _fontBase(size, color = color).copyWith(fontWeight: FontWeight.w200);
 
-  static TextStyle w100(final double size, [Color color = Colors.black])
+  static TextStyle w100(final double size, [Color color = const Color(0xff282a40)])
     => _fontBase(size, color = color).copyWith(fontWeight: FontWeight.w100);
 }

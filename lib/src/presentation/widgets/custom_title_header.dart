@@ -25,7 +25,7 @@ class CustomTitleHeader extends StatelessWidget {
       height: resp.hp(25),
       width: resp.width, 
       decoration: BoxDecoration(
-        color: color.withOpacity(0.75),
+        color: color,
         borderRadius: const BorderRadius.all(Radius.circular(10)),
       ),
       child: Column(

@@ -24,25 +24,23 @@ class CategoryContainer extends StatelessWidget {
         Expanded(
           flex: 2,
           child: Container(
+            padding: EdgeInsets.symmetric(horizontal: resp.lPadding / 2, vertical: resp.tPadding / 3),
             width: double.infinity,
             decoration: BoxDecoration(
               color: Colors.grey[100],
               borderRadius: BorderRadius.circular(10),
+              boxShadow: shadows
             ),
-            child: Image.asset('$iconsImagesPath/${category.icon}.png', fit: BoxFit.contain)
-          )
-        ),
-        SizedBox(height: resp.hp(1)),
-        Expanded(
-          flex: 1,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
+            child: Column(children: [
+              Expanded(
+                child: Image.asset('$iconsImagesPath/${category.icon}.png', fit: BoxFit.contain)
+              ),
+              SizedBox(height: resp.hp(1)),
               Text(category.title, style: TextStyles.w500(resp.dp(1.5)), overflow: TextOverflow.ellipsis),
               Text(category.description, textAlign: TextAlign.center, style: TextStyles.w300(resp.dp(1.25), Colors.grey), overflow: TextOverflow.ellipsis, maxLines: 2),
-            ],
-          ),
-        )
+            ])
+          )
+        ),
       ],
     );
   }

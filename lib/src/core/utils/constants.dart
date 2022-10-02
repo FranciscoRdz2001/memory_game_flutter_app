@@ -1,8 +1,14 @@
-import 'package:flutter/painting.dart';
+import 'package:flutter/material.dart';
 
 const Color accent = Color(0xff3AB0FF);
 
-
+List<BoxShadow> shadows = [
+    BoxShadow(
+      blurRadius: 15,
+      color: Colors.grey[100]!,
+      offset: const Offset(0, 15)
+    )
+];
 
 // PATHS
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:memoram_app/src/core/utils/constants.dart';
+import 'package:memoram_app/src/presentation/widgets/header_painter.dart';
 import '../../data/models/dashboard_item_model.dart';
 import '../widgets/custom_title_header.dart';
 import '../../game_logic/game_logic.dart';
@@ -26,13 +27,13 @@ class _HomePageState extends State<HomePage> {
 
   List<DashboardItemModel> dashboardItems = const [
     DashboardItemModel(
-      title: 'Games', value: '10', bgColor: Color(0xffB1B2FF)
+      title: 'Games', value: '10', bgColor: Color(0xffe3e4fd)
     ),
     DashboardItemModel(
-      title: 'Wins', value: '2', bgColor: Color(0xffAAC4FF)
+      title: 'Wins', value: '2', bgColor: Color(0xffe3e4fd)
     ),
     DashboardItemModel(
-      title: 'Losses', value: '8', bgColor: Color(0xffEE6983)
+      title: 'Losses', value: '8', bgColor: Color(0xffe3e4fd)
     ),
   ];
 
@@ -45,50 +46,58 @@ class _HomePageState extends State<HomePage> {
     final ResponsiveUtil resp = ResponsiveUtil.of(context);
     
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.only(
-          left: resp.lPadding,
-          right: resp.rPadding,
-          top: resp.tPadding
-        ),
-        child: LayoutBuilder(
-          builder: (_, constraints) {
-            return SingleChildScrollView(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxHeight: constraints.maxHeight
+      body: CustomPaint(
+        painter: const HeaderPainter(),
+        child: Padding(
+          padding: EdgeInsets.only(
+            left: resp.lPadding,
+            right: resp.rPadding,
+            top: resp.tPadding
+          ),
+          child: LayoutBuilder(
+            builder: (_, constraints) {
+              return SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxHeight: constraints.maxHeight
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: Column(
+                          children: [
+                            SizedBox(height: resp.separatorHeight),
+                            Text('Educational Memory Game', textAlign: TextAlign.center, style: TextStyles.w700(resp.dp(2.85), Colors.white)),
+                            Text('Start your game to start learning...', textAlign: TextAlign.center, style: TextStyles.w400(resp.dp(1.25), Colors.white)),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: resp.separatorHeight),
+                      Text('Dashboard:', textAlign: TextAlign.center, style: TextStyles.w500(resp.dp(2))),
+                      SizedBox(height: resp.separatorHeight),
+      
+                      FlexibleGridView(
+                        items: dashboardItems.map((i) => DashboardContainer(bgColor: Colors.grey[100]!, title: i.title, value: i.value)).toList(),
+                        crossAxisCount: 3,
+                      ),
+      
+                      // Categories Containers
+                      SizedBox(height: resp.separatorHeight),
+                      Text('Categories:', textAlign: TextAlign.center, style: TextStyles.w500(resp.dp(2))),
+                      SizedBox(height: resp.separatorHeight),
+                      FlexibleGridView(
+                        items: categories.list.map((c) => CategoryContainer(category: c)).toList(),
+                        crossAxisCount: 2,
+                      ),
+                    ],
+                  ),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const CustomTitleHeader(
-                      title: 'Educational Memory Game', 
-                      subTitle: 'Start your game to start learning...', 
-                      color: accent
-                    ),
-                    SizedBox(height: resp.separatorHeight),
-                    Text('Dashboard:', textAlign: TextAlign.center, style: TextStyles.w500(resp.dp(2))),
-                    SizedBox(height: resp.separatorHeight),
-
-                    FlexibleGridView(
-                      items: dashboardItems.map((i) => DashboardContainer(bgColor: i.bgColor, title: i.title, value: i.value)).toList(),
-                      crossAxisCount: 3,
-                    ),
-
-                    // Categories Containers
-                    SizedBox(height: resp.separatorHeight),
-                    Text('Categories:', textAlign: TextAlign.center, style: TextStyles.w500(resp.dp(2))),
-                    SizedBox(height: resp.separatorHeight),
-                    FlexibleGridView(
-                      items: categories.list.map((c) => CategoryContainer(category: c)).toList(),
-                      crossAxisCount: 2,
-                    ),
-                  ],
-                ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );
