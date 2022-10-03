@@ -1,15 +1,17 @@
-import 'package:flutter/painting.dart';
+import 'package:flutter/cupertino.dart';
 
 class DashboardItemModel{
 
+  final Color bgColor;
+  final IconData icon;
   final String title;
   final String value;
-  final Color bgColor;
 
   const DashboardItemModel({
+    required this.bgColor,
+    required this.icon,
     required this.title,
     required this.value,
-    required this.bgColor
   });
 
 }

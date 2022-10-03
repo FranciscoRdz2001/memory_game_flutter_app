@@ -1,16 +1,13 @@
-import 'package:flutter/material.dart';
 import 'package:memoram_app/src/core/utils/constants.dart';
-import 'package:memoram_app/src/presentation/widgets/header_painter.dart';
+import 'package:memoram_app/src/data/models/category_model.dart';
+import 'package:memoram_app/src/presentation/widgets/custom_scaffold_with_header.dart';
+import 'package:memoram_app/src/provider/categories_provider.dart';
+import 'package:palette_generator/palette_generator.dart';
+import 'package:provider/provider.dart';
 import '../../data/models/dashboard_item_model.dart';
-import '../widgets/custom_title_header.dart';
-import '../../game_logic/game_logic.dart';
-import '../../game_logic/images_categories.dart';
-import '../../core/utils/styles.dart';
-import '../../core/utils/responsive.dart';
 import '../widgets/category_container.dart';
 import '../widgets/dashboard_container.dart';
 import '../widgets/flexible_grid_view.dart';
-import 'package:provider/provider.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -23,83 +20,63 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  final CategoryInfo categories = CategoryInfo();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async{
+
+      final catProvider = Provider.of<CategoriesProvider>(context, listen: false);
+      
+      for(CategoryModel cat in catProvider.list){
+        final String imagePath = '$iconsImagesPath/${cat.icon}.png';
+        final paletteGenerator = await PaletteGenerator.fromImageProvider(
+          Image.asset(imagePath).image,
+        );
+
+        final Color color = paletteGenerator.dominantColor!.color;
+        catProvider.setColor(cat, color);
+      }
+    });
+  }
 
   List<DashboardItemModel> dashboardItems = const [
     DashboardItemModel(
-      title: 'Games', value: '10', bgColor: Color(0xffe3e4fd)
+      title: 'Games', value: '10', bgColor: Color(0xffe3e4fd), icon: Icons.gamepad_rounded
     ),
     DashboardItemModel(
-      title: 'Wins', value: '2', bgColor: Color(0xffe3e4fd)
+      title: 'Wins', value: '2', bgColor: Color(0xffe3e4fd), icon: Icons.star_rounded
     ),
     DashboardItemModel(
-      title: 'Losses', value: '8', bgColor: Color(0xffe3e4fd)
+      title: 'Losses', value: '8', bgColor: Color(0xffe3e4fd), icon: Icons.dangerous_rounded
     ),
   ];
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
 
-    final GameLogic game = Provider.of<GameLogic>(context);
-    game.context = context;
+    final CategoriesProvider categoriesProvider = Provider.of<CategoriesProvider>(context);
 
-    final ResponsiveUtil resp = ResponsiveUtil.of(context);
-    
-    return Scaffold(
-      body: CustomPaint(
-        painter: const HeaderPainter(),
-        child: Padding(
-          padding: EdgeInsets.only(
-            left: resp.lPadding,
-            right: resp.rPadding,
-            top: resp.tPadding
+    return CustomScaffoldWithHeader(
+      title: 'Educational Memory Game', 
+      subTitle: 'Start your game to start learning...',
+      getWidgets: (resp) {
+        return [
+          Text('Dashboard:', textAlign: TextAlign.center, style: TextStyles.w500(resp.dp(2.5))),
+
+          FlexibleGridView(
+            crossAxisCount: 3,
+            items: dashboardItems.map((i) => DashboardContainer(bgColor: containerBG, title: i.title, value: i.value, icon: i.icon)).toList()
           ),
-          child: LayoutBuilder(
-            builder: (_, constraints) {
-              return SingleChildScrollView(
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxHeight: constraints.maxHeight
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: Column(
-                          children: [
-                            SizedBox(height: resp.separatorHeight / 2),
-                            Text('Educational Memory Game', textAlign: TextAlign.center, style: TextStyles.w700(resp.dp(2.85), Colors.white)),
-                            Text('Start your game to start learning...', textAlign: TextAlign.center, style: TextStyles.w400(resp.dp(1.25), Colors.white)),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: resp.separatorHeight),
-                      Text('Dashboard:', textAlign: TextAlign.center, style: TextStyles.w500(resp.dp(2))),
-                      SizedBox(height: resp.separatorHeight),
-      
-                      FlexibleGridView(
-                        items: dashboardItems.map((i) => DashboardContainer(bgColor: Colors.grey[100]!, title: i.title, value: i.value)).toList(),
-                        crossAxisCount: 3,
-                      ),
-      
-                      // Categories Containers
-                      SizedBox(height: resp.separatorHeight),
-                      Text('Categories:', textAlign: TextAlign.center, style: TextStyles.w500(resp.dp(2))),
-                      SizedBox(height: resp.separatorHeight),
-                      FlexibleGridView(
-                        items: categories.list.map((c) => CategoryContainer(category: c)).toList(),
-                        crossAxisCount: 2,
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            },
+
+          // Categories Containers
+          Text('Categories:', textAlign: TextAlign.center, style: TextStyles.w500(resp.dp(2.5))),
+          FlexibleGridView(
+            items: categoriesProvider.list.map((c) => CategoryContainer(category: c)).toList(),
+            crossAxisCount: 2,
           ),
-        ),
-      ),
+        ];
+      },
     );
   }
 }

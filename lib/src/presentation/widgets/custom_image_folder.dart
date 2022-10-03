@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../game_logic/images_categories.dart';
+import 'package:memoram_app/src/data/models/category_model.dart';
 import '../../core/utils/styles.dart';
 import '../../core/utils/responsive.dart';
 
 class CustomImageFolder extends StatelessWidget {
 
   final Function() onTapEvent;
-  final Category category;
+  final CategoryModel category;
 
   CustomImageFolder({
     Key? key,

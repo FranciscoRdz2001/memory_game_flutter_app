@@ -1,0 +1,5 @@
+
+enum ImagesType {
+  animals,
+  states
+}

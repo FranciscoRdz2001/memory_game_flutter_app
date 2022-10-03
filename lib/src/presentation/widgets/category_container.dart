@@ -1,84 +1,74 @@
 import 'package:flutter/material.dart';
 import 'package:memoram_app/src/core/utils/constants.dart';
-import 'package:palette_generator/palette_generator.dart';
-import '../../game_logic/images_categories.dart';
+import 'package:memoram_app/src/data/models/category_model.dart';
+import 'package:memoram_app/src/presentation/views/game_page.dart';
+import 'package:memoram_app/src/presentation/widgets/custom_category_image_container.dart';
+import 'package:memoram_app/src/provider/game_logic_provider.dart';
+import 'package:provider/provider.dart';
 import '../../core/utils/styles.dart';
 import '../../core/utils/responsive.dart';
-import 'bubbles_painter.dart';
 
 
 class CategoryContainer extends StatelessWidget {
   
-  final Category category;
+  final CategoryModel category;
 
   const CategoryContainer({
     Key? key,
     required this.category
   }) : super(key: key);
 
-  Future<PaletteGenerator>_updatePaletteGenerator() async{
-    final paletteGenerator = await PaletteGenerator.fromImageProvider(
-      Image.asset('$iconsImagesPath/${category.icon}.png').image,
-    );
-    return paletteGenerator;
-  }
-
   @override
   Widget build(BuildContext context) {
 
     final ResponsiveUtil resp = ResponsiveUtil.of(context);
+    final GameLogicProvider logicProvider = Provider.of<GameLogicProvider>(context);
+
+    final String imagePath = '$iconsImagesPath/${category.icon}.png';
 
     return Column(
       children: [
         Expanded(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: resp.lPadding / 4, vertical: resp.tPadding / 8),
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: Colors.grey[100],
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: shadows
-            ),
-            child: FutureBuilder<PaletteGenerator>(
-              future: _updatePaletteGenerator(),
-              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                
-                Color categoryContainerColor = Colors.grey[100]!;
-
-                if(snapshot.connectionState == ConnectionState.done) {
-                  if (!snapshot.hasError){
-                    final face = snapshot.data.dominantColor.color;
-                    categoryContainerColor = face;
-                  }
-                }
-
-                return Column(
-                  children: [
-                    Expanded(
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 250),
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: categoryContainerColor,
-                          borderRadius: BorderRadius.circular(10)
-
-                        ),
-                        child: Image.asset('$iconsImagesPath/${category.icon}.png', fit: BoxFit.contain)
-                      )
+          child: GestureDetector(
+            onTap: (){
+              logicProvider.selectedCategory = category;
+              Navigator.push(
+                context, 
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => const GamePage(),
+                ),
+              );
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: resp.lPadding / 4, vertical: resp.tPadding / 8),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: containerBG,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: shadows
+              ),
+              child: Column(
+                children: [
+                  CustomCategoryImageContainer(
+                    path: imagePath, 
+                    category: category,
+                    flex: 13
+                  ),
+                  const Expanded(
+                    child: SizedBox(),
+                  ),
+                  Expanded(
+                    flex: 10,
+                    child: Column(
+                      children: [
+                        Text(category.title, style: TextStyles.w500(resp.dp(1.5)), overflow: TextOverflow.ellipsis),
+                        Text(category.description, textAlign: TextAlign.center, style: TextStyles.w300(resp.dp(1.25), Colors.grey), overflow: TextOverflow.ellipsis, maxLines: 2),
+                      ],
                     ),
-                    Expanded(
-                      child: Column(
-                        children: [
-                          SizedBox(height: resp.hp(1)),
-                          Text(category.title, style: TextStyles.w500(resp.dp(1.5)), overflow: TextOverflow.ellipsis),
-                          Text(category.description, textAlign: TextAlign.center, style: TextStyles.w300(resp.dp(1.25), Colors.grey), overflow: TextOverflow.ellipsis, maxLines: 2),
-                        ],
-                      ),
-                    )
-                  ]
-                );
-              },
-            )
+                  ),
+                ]
+              )
+            ),
           )
         ),
       ],

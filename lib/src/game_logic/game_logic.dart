@@ -9,7 +9,7 @@ import '../core/utils/styles.dart';
 import '../presentation/widgets/custom_alert.dart';
 import '../data/models/animal_model.dart';
 import 'game_states.dart';
-import 'images_categories.dart';
+import 'images_types.dart';
 
 class GameLogic with ChangeNotifier{
   
