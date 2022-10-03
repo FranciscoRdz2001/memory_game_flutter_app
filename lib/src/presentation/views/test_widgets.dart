@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:memoram_app/src/core/utils/responsive.dart';
-import 'package:memoram_app/src/presentation/widgets/bubbles_painter.dart';
 
 
 class TestWidgets extends StatelessWidget {
@@ -16,7 +15,7 @@ class TestWidgets extends StatelessWidget {
     return Scaffold(
       body: CustomPaint(
         size: Size(resp.width, resp.height / 2),
-        painter: const BubblesPainter(bubblesColor: Colors.red),
+        // painter: const BubblesPainter(bubblesColor: Colors.red),
       ),
     );
   }

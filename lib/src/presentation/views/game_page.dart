@@ -1,6 +1,8 @@
 import 'package:memoram_app/src/core/utils/constants.dart';
 import 'package:memoram_app/src/presentation/widgets/custom_category_image_container.dart';
 import 'package:memoram_app/src/presentation/widgets/custom_scaffold_with_header.dart';
+import 'package:memoram_app/src/presentation/widgets/flexible_grid_view.dart';
+import 'package:memoram_app/src/presentation/widgets/image_container.dart';
 import 'package:memoram_app/src/provider/game_logic_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -15,6 +17,10 @@ class GamePage extends StatefulWidget {
 }
 
 class _GamePageState extends State<GamePage>{
+
+  final int _maxPairNumberOfColumns = 4;
+  final int _maxOddNumberOfColumns = 5;
+  final int _imagesQuantity = 22;
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +78,7 @@ class _GamePageState extends State<GamePage>{
     // }
 
   final String imagePath = '$iconsImagesPath/${logicProvider.selectedCategory.icon}.png';
-  
+
   return CustomScaffoldWithHeader(
     title: logicProvider.selectedCategory.title, 
     subTitle: logicProvider.selectedCategory.description,
@@ -84,9 +90,18 @@ class _GamePageState extends State<GamePage>{
     ),
     getWidgets: (resp) {
       return [
-        const Expanded(
+        Expanded(
           flex: 3,
-          child: SizedBox(),
+          child: SizedBox(
+            child: Column(
+              children: [
+                FlexibleGridView(
+                  crossAxisCount: (_imagesQuantity % 2 == 0) ? _maxPairNumberOfColumns : _maxOddNumberOfColumns,
+                  items: List.generate(_imagesQuantity, (index) => const ImageContainer()) 
+                )
+              ],
+            ),
+          ),
         )
       ];
     },
@@ -138,53 +153,53 @@ class _GamePageState extends State<GamePage>{
     //         },
     //       ),
     //     ),
-    //     // child: CustomPaint(
-    //     //   painter: const HeaderPainter(),
-    //     //   child: Column(
-    //     //     children: [
-    //     //       // CustomTitleHeader(title: "Movimientos ${game.movements}", subTitle: "Pares ${(game.correctImages == null ? 0 : game.correctImages! ~/ 2)}", color: game.gameState == GameStates.notStarted ? Colors.blue : game.comparisonStatus == ComparisonStatus.correct ? Colors.green : game.comparisonStatus == ComparisonStatus.incorrect ? Colors.red : Colors.blue),
-    //     //       Padding(
-    //     //         padding: EdgeInsets.only(
-    //     //           left: resp.lPadding,
-    //     //           right: resp.rPadding,
-    //     //           top: resp.tPadding
-    //     //         ),
-    //     //         child: Column(
-    //     //           children: [
-    //     //             // Text((game.correctImages == null ? 0 : game.correctImages! ~/ 2).toString(), style: TextStyles.w700(resp.wp(1)), textAlign: TextAlign.center,),
-    //     //             // SizedBox(height: resp.hp(percent) * 0.005),
-    //     //             // Text("Empieza a seleccionar imagenes!", style: TextStyles.w400(resp.wp(1)), textAlign: TextAlign.center),
-    //     //             // showData(),
-    //     //             // SizedBox(height: size.height * 0.01),
-    //     //             // Text("Cambiar el tamaño. ${game.imagesToShow}.", style: TextStyles.w300(resp.wp(1)), textAlign: TextAlign.center),
-    //     //             // Slider(
-    //     //             //   value: game.imagesToShow.toDouble() / 2,
-    //     //             //   min: 1.0,
-    //     //             //   max: game.imagesQuantity.toDouble(),
-    //     //             //   divisions: 7,
-    //     //             //   onChanged: (double newValue) => setState(() => game.changeGameSize(newValue.toInt())),
-    //     //             //   activeColor: Colors.blue.withOpacity(0.75),
-    //     //             //   inactiveColor: Colors.blue.withOpacity(0.15),
-    //     //             // ),
-    //     //             // CustomButton(size: size, isTrue: game.gameState == GameStates.started, enabledColor: Colors.green, icon: Icons.gamepad_rounded, text: "Iniciar Juego", onPressEvent: () async{
-    //     //             //   if(game.gameState == GameStates.notStarted){
-    //     //             //     await game.start();
-    //     //             //     CustomSnackBar(context: context, color: Colors.green, message: "¡El juego ha comenzado!");
-    //     //             //   } else {
-    //     //             //     CustomSnackBar(context: context, color: Colors.red, message: "¡El juego ya ha empezado!");
-    //     //             //   }
-    //     //             // }),
-    //     //             // SizedBox(height: size.height * 0.01),
-    //     //             // CustomButton(size: size, isTrue: true, enabledColor: Colors.red, icon: Icons.restore_rounded, text: "Reiniciar Juego", onPressEvent: () async{
-    //     //             //   await game.restart();
-    //     //             //   CustomSnackBar(context: context, color: Colors.green, message: "¡Se ha reiniciado el juego!");
-    //     //             // })
-    //     //           ],
-    //     //         ),
-    //     //       ),
-    //     //     ],
-    //     //   ),
-    //     // ),
+        // child: CustomPaint(
+        //   painter: const HeaderPainter(),
+        //   child: Column(
+        //     children: [
+        //       // CustomTitleHeader(title: "Movimientos ${game.movements}", subTitle: "Pares ${(game.correctImages == null ? 0 : game.correctImages! ~/ 2)}", color: game.gameState == GameStates.notStarted ? Colors.blue : game.comparisonStatus == ComparisonStatus.correct ? Colors.green : game.comparisonStatus == ComparisonStatus.incorrect ? Colors.red : Colors.blue),
+        //       Padding(
+        //         padding: EdgeInsets.only(
+        //           left: resp.lPadding,
+        //           right: resp.rPadding,
+        //           top: resp.tPadding
+        //         ),
+        //         child: Column(
+        //           children: [
+                    // Text((game.correctImages == null ? 0 : game.correctImages! ~/ 2).toString(), style: TextStyles.w700(resp.wp(1)), textAlign: TextAlign.center,),
+                    // SizedBox(height: resp.hp(percent) * 0.005),
+                    // Text("Empieza a seleccionar imagenes!", style: TextStyles.w400(resp.wp(1)), textAlign: TextAlign.center),
+                    // showData(),
+                    // SizedBox(height: size.height * 0.01),
+                    // Text("Cambiar el tamaño. ${game.imagesToShow}.", style: TextStyles.w300(resp.wp(1)), textAlign: TextAlign.center),
+                    // Slider(
+                    //   value: game.imagesToShow.toDouble() / 2,
+                    //   min: 1.0,
+                    //   max: game.imagesQuantity.toDouble(),
+                    //   divisions: 7,
+                    //   onChanged: (double newValue) => setState(() => game.changeGameSize(newValue.toInt())),
+                    //   activeColor: Colors.blue.withOpacity(0.75),
+                    //   inactiveColor: Colors.blue.withOpacity(0.15),
+                    // ),
+                    // CustomButton(size: size, isTrue: game.gameState == GameStates.started, enabledColor: Colors.green, icon: Icons.gamepad_rounded, text: "Iniciar Juego", onPressEvent: () async{
+                    //   if(game.gameState == GameStates.notStarted){
+                    //     await game.start();
+                    //     CustomSnackBar(context: context, color: Colors.green, message: "¡El juego ha comenzado!");
+                    //   } else {
+                    //     CustomSnackBar(context: context, color: Colors.red, message: "¡El juego ya ha empezado!");
+                    //   }
+                    // }),
+                    // SizedBox(height: size.height * 0.01),
+                    // CustomButton(size: size, isTrue: true, enabledColor: Colors.red, icon: Icons.restore_rounded, text: "Reiniciar Juego", onPressEvent: () async{
+                    //   await game.restart();
+                    //   CustomSnackBar(context: context, color: Colors.green, message: "¡Se ha reiniciado el juego!");
+                    // })
+        //           ],
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ),
     //   )
     // );
   }

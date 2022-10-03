@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memoram_app/src/core/utils/styles.dart';
 import '../../core/utils/responsive.dart';
 
 
@@ -20,7 +21,7 @@ class FlexibleGridView extends StatelessWidget {
 
     final ResponsiveUtil resp = ResponsiveUtil.of(context);
 
-    return Flexible(
+    return items.isNotEmpty ? Flexible(
       flex: flex ?? 1,
       child: GridView.builder(
         shrinkWrap: true,
@@ -34,6 +35,6 @@ class FlexibleGridView extends StatelessWidget {
         itemCount: items.length,
         itemBuilder: (_, x) => items[x]
       ),
-    );
+    ) : Text('GridView has no items.', style: TextStyles.w400(resp.dp(1.5), Colors.red[200]!),);
   }
 }
