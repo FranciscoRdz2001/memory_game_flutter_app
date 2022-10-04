@@ -31,7 +31,7 @@ class CategoryContainer extends StatelessWidget {
         Expanded(
           child: GestureDetector(
             onTap: (){
-              logicProvider.selectedCategory = category;
+              logicProvider.category = category;
               Navigator.push(
                 context, 
                 MaterialPageRoute<void>(

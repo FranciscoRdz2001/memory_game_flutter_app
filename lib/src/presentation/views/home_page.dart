@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
 
       final catProvider = Provider.of<CategoriesProvider>(context, listen: false);
       
-      for(CategoryModel cat in catProvider.list){
+      for(CategoryModel cat in catProvider.categories){
         final String imagePath = '$iconsImagesPath/${cat.icon}.png';
         final paletteGenerator = await PaletteGenerator.fromImageProvider(
           Image.asset(imagePath).image,
@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
           // Categories Containers
           Text('Categories:', textAlign: TextAlign.center, style: TextStyles.w500(resp.dp(2.5))),
           FlexibleGridView(
-            items: categoriesProvider.list.map((c) => CategoryContainer(category: c)).toList(),
+            items: categoriesProvider.categories.map((c) => CategoryContainer(category: c)).toList(),
             crossAxisCount: 2,
           ),
         ];

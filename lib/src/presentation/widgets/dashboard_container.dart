@@ -36,8 +36,8 @@ class DashboardContainer extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(icon, size: resp.dp(3), color: black),
-          Text(title, textAlign: TextAlign.center, style: TextStyles.w400(resp.dp(1.25))),
-          Text(value, textAlign: TextAlign.center, style: TextStyles.w700(resp.dp(2))),
+          Text(title, textAlign: TextAlign.center, style: TextStyles.w400(resp.dp(1.25), Colors.grey)),
+          Text(value, textAlign: TextAlign.center, style: TextStyles.w700(resp.dp(2), black)),
         ],
       ),
     );

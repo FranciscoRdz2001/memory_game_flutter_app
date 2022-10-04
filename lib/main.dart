@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<GameLogicProvider>(create: (_) => GameLogicProvider()),
-        ChangeNotifierProvider<CategoriesProvider>(create: (_) => CategoriesProvider()),
+        ChangeNotifierProvider<CategoriesProvider>(create: (_) => CategoriesProvider(context)),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

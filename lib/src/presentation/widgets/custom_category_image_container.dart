@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:memoram_app/src/core/utils/constants.dart';
 import 'package:memoram_app/src/data/models/category_model.dart';
-import 'package:memoram_app/src/provider/categories_provider.dart';
-import 'package:palette_generator/palette_generator.dart';
-import 'package:provider/provider.dart';
 
 
 class CustomCategoryImageContainer extends StatelessWidget {

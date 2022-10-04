@@ -1,5 +1,0 @@
-
-enum ImagesType {
-  animals,
-  states
-}

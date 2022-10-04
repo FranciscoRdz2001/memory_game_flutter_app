@@ -15,8 +15,11 @@ List<BoxShadow> shadows = [
 // PATHS
 
 const String _imagesFolders = 'assets/images';
+const String _categoriesPath = '$_imagesFolders/categories';
 
-const String animalsImagesPath = '$_imagesFolders/animals';
+const String animalsImagesPath = '$_categoriesPath/animals';
 const String iconsImagesPath = '$_imagesFolders/icons';
 const String questionAndCorrectImagesPath =  '$_imagesFolders/questionAndCorrect';
-const String statesImagesPath = '$_imagesFolders/states';
+const String statesImagesPath = '$_categoriesPath/states';
+
+const String questionImagePath = '$questionAndCorrectImagesPath/question.png';
