@@ -6,21 +6,20 @@ import 'package:memoram_app/src/core/utils/custom_animation.dart';
 import 'package:memoram_app/src/core/utils/responsive.dart';
 import 'package:memoram_app/src/core/utils/styles.dart';
 import 'package:memoram_app/src/data/models/category_model.dart';
-import 'package:memoram_app/src/presentation/views/game_page.dart';
 import 'package:memoram_app/src/presentation/widgets/flexible_grid_view.dart';
 import 'package:memoram_app/src/provider/game_logic_provider.dart';
 import 'package:provider/provider.dart';
 
 
-class CategorySpash extends StatefulWidget {
+class CategorySpashPage extends StatefulWidget {
 
-  const CategorySpash({Key? key}) : super(key: key);
+  const CategorySpashPage({Key? key}) : super(key: key);
 
   @override
-  State<CategorySpash> createState() => _CategorySpashState();
+  State<CategorySpashPage> createState() => _CategorySpashPageState();
 }
 
-class _CategorySpashState extends State<CategorySpash> with SingleTickerProviderStateMixin{
+class _CategorySpashPageState extends State<CategorySpashPage> with SingleTickerProviderStateMixin{
 
   late final CustomAnimation _splashAnimation;
   bool? _animationIsInReverse;
@@ -54,9 +53,8 @@ class _CategorySpashState extends State<CategorySpash> with SingleTickerProvider
     if(status == AnimationStatus.dismissed && _animationIsInReverse!){
       Navigator.pushReplacementNamed(
         context,
-        '/gamePage',
+        '/gameConfigurationPage',
       );
-      // Navigator.popAndPushNamed(context, '/gamePage');
     }
   }
 
@@ -159,7 +157,7 @@ class _CategorySpashState extends State<CategorySpash> with SingleTickerProvider
                                   color: accent,
                                   borderRadius: BorderRadius.circular(10)
                                 ),
-                                child: Text('Start game', style: TextStyles.w700(resp.dp(2), Colors.white)),
+                                child: Text('Configure game', style: TextStyles.w700(resp.dp(2), Colors.white)),
                               ),
                             ),
                           ),

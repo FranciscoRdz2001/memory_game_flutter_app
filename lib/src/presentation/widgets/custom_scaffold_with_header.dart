@@ -51,13 +51,12 @@ class CustomScaffoldWithHeader extends StatelessWidget {
                 child: Center(
                   child: Column(
                     children: [
-                      SizedBox(height: resp.separatorHeight / 2),
                       if(beforeTitleWidget != null) ...[
                         beforeTitleWidget!,
                         SizedBox(height: resp.separatorHeight / 2),
                       ],
-                      Text(title, textAlign: TextAlign.center, style: TextStyles.w700(resp.dp(2.85), textColor)),
-                      Text(subTitle, textAlign: TextAlign.center, style: TextStyles.w400(resp.dp(1.25), textColor)),
+                      Text(title, textAlign: TextAlign.center, style: TextStyles.w700(resp.dp(2.85), textColor), maxLines: 2, overflow: TextOverflow.ellipsis),
+                      Text(subTitle, textAlign: TextAlign.center, style: TextStyles.w400(resp.dp(1.25), textColor), maxLines: 2, overflow: TextOverflow.ellipsis),
                     ],
                   ),
                 ),

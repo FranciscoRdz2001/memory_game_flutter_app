@@ -29,8 +29,11 @@ class CustomAnimation{
         parent: _controller,
         curve: Curves.ease,
       ))
-      ..addListener(animationListener!)
-      ..addStatusListener(animationStatusListener!);
+      ..addListener(animationListener!);
+
+    if(animationStatusListener != null){
+      _controller.addStatusListener(animationStatusListener!);
+    }
     if(reverse ?? false){
       _controller.repeat(reverse: true);
     }

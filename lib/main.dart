@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:memoram_app/src/presentation/views/category_splash.dart';
+import 'package:memoram_app/src/presentation/views/category_splash_page.dart';
+import 'package:memoram_app/src/presentation/views/game_configuration_page.dart';
 import 'package:memoram_app/src/presentation/views/game_page.dart';
 import 'package:memoram_app/src/provider/categories_provider.dart';
 import 'package:memoram_app/src/provider/game_logic_provider.dart';
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
         home: const HomePage(),
         routes: {
           '/homePage' : (context) => const HomePage(), 
-          '/categorySplash' : (context) => const CategorySpash(),
+          '/categorySplash' : (context) => const CategorySpashPage(),
+          '/gameConfigurationPage' : (context) => const GameConfigurationPage(),
           '/gamePage' : (context) => const GamePage(),
         },
       ),

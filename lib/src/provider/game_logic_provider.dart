@@ -17,8 +17,9 @@ class GameLogicProvider with ChangeNotifier{
 
   final int _imagesToRepeat = 2;
 
-  int get imagesQuantity => _imagesQuantity!;
   List<String>? get mixedImages => _mixedImages!;
+  int get imagesQuantity => _imagesQuantity!;
+  int get movements => _movements!;
 
 
   set imagesQuantity(final int quantity){
