@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:memoram_app/src/presentation/views/category_splash.dart';
+import 'package:memoram_app/src/presentation/views/game_page.dart';
 import 'package:memoram_app/src/provider/categories_provider.dart';
 import 'package:memoram_app/src/provider/game_logic_provider.dart';
 import 'package:provider/provider.dart';
@@ -25,6 +27,11 @@ class MyApp extends StatelessWidget {
         ),
         title: 'Memorama',
         home: const HomePage(),
+        routes: {
+          '/homePage' : (context) => const HomePage(), 
+          '/categorySplash' : (context) => const CategorySpash(),
+          '/gamePage' : (context) => const GamePage(),
+        },
       ),
     );
   }

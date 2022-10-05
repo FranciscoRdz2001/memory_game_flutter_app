@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:memoram_app/src/core/utils/constants.dart';
 import 'package:memoram_app/src/data/models/category_model.dart';
+import 'package:memoram_app/src/presentation/views/category_splash.dart';
 import 'package:memoram_app/src/presentation/views/game_page.dart';
 import 'package:memoram_app/src/presentation/widgets/custom_category_image_container.dart';
 import 'package:memoram_app/src/provider/game_logic_provider.dart';
@@ -35,7 +36,7 @@ class CategoryContainer extends StatelessWidget {
               Navigator.push(
                 context, 
                 MaterialPageRoute<void>(
-                  builder: (BuildContext context) => const GamePage(),
+                  builder: (BuildContext context) => const CategorySpash(),
                 ),
               );
             },

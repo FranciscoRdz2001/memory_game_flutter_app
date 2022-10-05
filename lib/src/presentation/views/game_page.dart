@@ -16,16 +16,17 @@ class GamePage extends StatefulWidget {
   State<GamePage> createState() => _GamePageState();
 }
 
-class _GamePageState extends State<GamePage>{
+class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin{
 
   final int _maxPairNumberOfColumns = 4;
   final int _maxOddNumberOfColumns = 5;
+
   @override
   Widget build(BuildContext context) {
 
     final GameLogicProvider logicProvider = Provider.of<GameLogicProvider>(context);
-    final String imagePath = '$iconsImagesPath/${logicProvider.category.icon}.png';
 
+    final String imagePath = '$iconsImagesPath/${logicProvider.category.icon}.png';
     final int imagesQuantity = logicProvider.imagesQuantity;
 
     return CustomScaffoldWithHeader(
@@ -33,6 +34,7 @@ class _GamePageState extends State<GamePage>{
       subTitle: logicProvider.category.description,
       withoutHeader: true,
       beforeTitleWidget: CustomCategoryImageContainer(
+        withoutHero: true,
         flex: 1,
         path: imagePath,
         category: logicProvider.category,

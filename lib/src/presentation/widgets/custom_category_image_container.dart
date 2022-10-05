@@ -11,8 +11,11 @@ class CustomCategoryImageContainer extends StatelessWidget {
   final Color? definedColor;
   final int? flex;
 
+  final bool? withoutHero;
+
   const CustomCategoryImageContainer({
     Key? key,
+    this.withoutHero,
     this.definedColor,
     this.flex,
     required this.path,
@@ -32,7 +35,8 @@ class CustomCategoryImageContainer extends StatelessWidget {
           color: category.bgColor ?? containerBG,
           borderRadius: BorderRadius.circular(10)
         ),
-        child: Hero(
+        child: withoutHero != null ? Image.asset(path, fit: BoxFit.contain)
+        : Hero(
           tag: path,
           child: Image.asset(path, fit: BoxFit.contain)
         )

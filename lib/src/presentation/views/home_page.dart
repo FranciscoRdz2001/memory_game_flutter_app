@@ -63,7 +63,6 @@ class _HomePageState extends State<HomePage> {
       getWidgets: (resp) {
         return [
           Text('Dashboard:', textAlign: TextAlign.center, style: TextStyles.w500(resp.dp(2.5))),
-
           FlexibleGridView(
             crossAxisCount: 3,
             items: dashboardItems.map((i) => DashboardContainer(bgColor: containerBG, title: i.title, value: i.value, icon: i.icon)).toList()
