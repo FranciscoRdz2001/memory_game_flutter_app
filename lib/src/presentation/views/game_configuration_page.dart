@@ -59,7 +59,7 @@ class _GameConfigurationPageState extends State<GameConfigurationPage> with Sing
       subTitle: 'Configure your game',
       withoutHeader: true,
       beforeTitleWidget: CustomCategoryImageContainer(
-        withoutHero: true,
+        withoutHero: false,
         flex: 1,
         path: imagePath,
         category: logicProvider.category,

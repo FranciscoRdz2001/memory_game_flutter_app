@@ -54,7 +54,7 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
       title: logicProvider.category.title, 
       subTitle: logicProvider.category.description,
       beforeTitleWidget: CustomCategoryImageContainer(
-        withoutHero: true,
+        withoutHero: false,
         flex: 1,
         path: imagePath,
         category: logicProvider.category,

@@ -26,6 +26,7 @@ class FlexibleGridView extends StatelessWidget {
       child: GridView.builder(
         shrinkWrap: true,
         padding: EdgeInsets.zero,
+        clipBehavior: Clip.hardEdge,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: crossAxisCount,
           crossAxisSpacing: resp.wp(4),

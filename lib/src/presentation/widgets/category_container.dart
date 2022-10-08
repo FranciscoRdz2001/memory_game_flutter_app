@@ -51,6 +51,7 @@ class CategoryContainer extends StatelessWidget {
               child: Column(
                 children: [
                   CustomCategoryImageContainer(
+                    withoutHero: true,
                     path: imagePath, 
                     category: category,
                     flex: 13

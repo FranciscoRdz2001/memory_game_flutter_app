@@ -26,21 +26,23 @@ class CustomCategoryImageContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return Expanded(
-      flex: flex ?? 1,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 250),
+    Widget getBody(){
+      return Container(
         width: double.infinity,
         decoration: BoxDecoration(
           color: category.bgColor ?? containerBG,
           borderRadius: BorderRadius.circular(10)
         ),
-        child: withoutHero != null ? Image.asset(path, fit: BoxFit.contain)
-        : Hero(
-          tag: path,
-          child: Image.asset(path, fit: BoxFit.contain)
-        )
-      )
+        child: Image.asset(path, fit: BoxFit.contain)
+      );
+    }
+
+    return Expanded(
+      flex: flex ?? 1,
+      child: withoutHero == null || (withoutHero != null && !withoutHero!) ? Hero(
+        tag: path,
+        child: getBody()
+      ) : getBody()
     );
   }
 }
