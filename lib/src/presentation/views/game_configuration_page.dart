@@ -1,6 +1,7 @@
 import 'package:memoram_app/src/core/utils/constants.dart';
 import 'package:memoram_app/src/core/utils/custom_animation.dart';
 import 'package:memoram_app/src/core/utils/responsive.dart';
+import 'package:memoram_app/src/presentation/views/game_page.dart';
 import 'package:memoram_app/src/presentation/widgets/custom_category_image_container.dart';
 import 'package:memoram_app/src/presentation/widgets/custom_scaffold_with_header.dart';
 import 'package:memoram_app/src/provider/game_logic_provider.dart';
@@ -57,10 +58,9 @@ class _GameConfigurationPageState extends State<GameConfigurationPage> with Sing
     return CustomScaffoldWithHeader(
       title: logicProvider.category.title, 
       subTitle: 'Configure your game',
-      withoutHeader: true,
+      withScroll: false,
       beforeTitleWidget: CustomCategoryImageContainer(
         withoutHero: false,
-        flex: 1,
         path: imagePath,
         category: logicProvider.category,
       ),
@@ -98,9 +98,12 @@ class _GameConfigurationPageState extends State<GameConfigurationPage> with Sing
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushReplacementNamed(
+                      Navigator.pushReplacement(
                         context,
-                        '/gamePage',
+                        PageRouteBuilder(
+                            transitionDuration: const Duration(milliseconds: 500),
+                            pageBuilder: (_, __, ___) => const GamePage()
+                        )
                       );
                     },
                     child: Container(

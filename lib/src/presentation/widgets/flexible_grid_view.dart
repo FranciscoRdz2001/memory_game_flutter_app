@@ -21,21 +21,20 @@ class FlexibleGridView extends StatelessWidget {
 
     final ResponsiveUtil resp = ResponsiveUtil.of(context);
 
-    return items.isNotEmpty ? Flexible(
-      flex: flex ?? 1,
-      child: GridView.builder(
-        shrinkWrap: true,
-        padding: EdgeInsets.zero,
-        clipBehavior: Clip.hardEdge,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+    return items.isNotEmpty ? LayoutBuilder(
+      builder: (context, constraints) {
+
+        return GridView.count(
+          shrinkWrap: true,
           crossAxisCount: crossAxisCount,
           crossAxisSpacing: resp.wp(4),
-          mainAxisSpacing: resp.hp(1)
-        ),
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: items.length,
-        itemBuilder: (_, x) => items[x]
-      ),
-    ) : Text('GridView has no items.', style: TextStyles.w400(resp.dp(1.5), Colors.red[200]!),);
+          mainAxisSpacing: resp.hp(1),
+          clipBehavior: Clip.none,
+          padding: EdgeInsets.zero,
+          physics: const NeverScrollableScrollPhysics(),
+          children: items
+        );
+      }
+    ) : Text('GridView has no items.', style: TextStyles.w400(resp.dp(1.5), Colors.red[200]!));
   }
 }

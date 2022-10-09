@@ -26,8 +26,12 @@ class DashboardContainer extends StatelessWidget {
     final ResponsiveUtil resp = ResponsiveUtil.of(context);
     
     return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: resp.lPadding / 4,
+        vertical: resp.tPadding * 0.15
+      ),
       decoration: BoxDecoration(
-        color: bgColor,
+        color: containerBG,
         borderRadius: BorderRadius.circular(10),
         boxShadow: shadows
       ),
@@ -35,9 +39,27 @@ class DashboardContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, size: resp.dp(3), color: black),
-          Text(title, textAlign: TextAlign.center, style: TextStyles.w400(resp.dp(1.25), Colors.grey)),
-          Text(value, textAlign: TextAlign.center, style: TextStyles.w700(resp.dp(2), black)),
+          Expanded(
+            flex: 4,
+            child: Container(
+              width: resp.width,
+              decoration: BoxDecoration(
+                color: bgColor,
+                borderRadius: BorderRadius.circular(10)
+              ),
+              child: Icon(icon, size: resp.dp(3), color: Colors.white)
+            )
+          ),
+          SizedBox(height: resp.hp(0.5)),
+          Expanded(
+            flex: 4,
+            child: Column(
+              children: [
+                Text(title, textAlign: TextAlign.center, style: TextStyles.w400(resp.dp(1.25), Colors.grey)),
+                Text(value, textAlign: TextAlign.center, style: TextStyles.w700(resp.dp(2))),
+              ],
+            ),
+          ),
         ],
       ),
     );

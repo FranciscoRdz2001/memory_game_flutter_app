@@ -3,7 +3,8 @@ import 'package:memoram_app/src/core/utils/custom_animation.dart';
 import 'package:memoram_app/src/presentation/widgets/custom_category_image_container.dart';
 import 'package:memoram_app/src/presentation/widgets/custom_scaffold_with_header.dart';
 import 'package:memoram_app/src/presentation/widgets/flexible_grid_view.dart';
-import 'package:memoram_app/src/presentation/widgets/image_container.dart';
+import 'package:memoram_app/src/presentation/widgets/animated_image_container.dart';
+import 'package:memoram_app/src/presentation/widgets/game_information_container.dart';
 import 'package:memoram_app/src/provider/game_logic_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -50,12 +51,11 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
     final int elementsInRow = (logicProvider.mixedImages!.length % 2) == 0 ? maxPairNumberOfColumns : maxOddNumberOfColumns; 
 
     return CustomScaffoldWithHeader(
-      withoutHeader: true,
       title: logicProvider.category.title, 
       subTitle: logicProvider.category.description,
+      withScroll: false,
       beforeTitleWidget: CustomCategoryImageContainer(
         withoutHero: false,
-        flex: 1,
         path: imagePath,
         category: logicProvider.category,
       ),
@@ -78,51 +78,21 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Expanded(
-                                child: Column(
-                                  children: [
-                                    SizedBox(height: resp.separatorHeight / 4),
-                                    Text('Time', style: TextStyles.w300(resp.dp(1.5)), textAlign: TextAlign.center),
-                                    Text('0:30', style: TextStyles.w600(resp.dp(2), accent)),
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                child: Column(
-                                  children: [
-                                    SizedBox(height: resp.separatorHeight / 4),
-                                    Text('Movements', style: TextStyles.w300(resp.dp(1.5)), textAlign: TextAlign.center),
-                                    Text(logicProvider.movements.toString(), style: TextStyles.w600(resp.dp(2), accent)),
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                child: Column(
-                                  children: [
-                                    SizedBox(height: resp.separatorHeight / 4),
-                                    Text('Wrong', style: TextStyles.w300(resp.dp(1.5)), textAlign: TextAlign.center),
-                                    Text(logicProvider.movements.toString(), style: TextStyles.w600(resp.dp(2), accent)),
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                child: Column(
-                                  children: [
-                                    SizedBox(height: resp.separatorHeight / 4),
-                                    Text('Correct', style: TextStyles.w300(resp.dp(1.5)), textAlign: TextAlign.center),
-                                    Text(logicProvider.movements.toString(), style: TextStyles.w600(resp.dp(2), accent)),
-                                  ],
-                                ),
-                              ),
+                              const GameInformationContainer(text: 'Time', data: '0:30'),
+                              GameInformationContainer(text: 'Movements', data: logicProvider.movements.toString()),
+                              GameInformationContainer(text: 'Wrong', data: logicProvider.movements.toString()),
+                              GameInformationContainer(text: 'Correct', data: logicProvider.movements.toString())
                             ],
                           ),
                           SizedBox(height: resp.separatorHeight),
-                          FlexibleGridView(
-                            crossAxisCount: elementsInRow,
-                            items: List.generate(
-                              logicProvider.mixedImages!.length, 
-                              (x) => ImageContainer(image: logicProvider.mixedImages![x])
-                            )
+                          Expanded(
+                            child: FlexibleGridView(
+                              crossAxisCount: elementsInRow,
+                              items: List.generate(
+                                logicProvider.mixedImages!.length, 
+                                (x) => AnimatedImageContainer(image: logicProvider.mixedImages![x])
+                              )
+                            ),
                           ),
                         ],
                       ),
@@ -132,7 +102,6 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
               ),
             ),
           ),
-          SizedBox(height: resp.separatorHeight / 2)
         ];
       }),
     );

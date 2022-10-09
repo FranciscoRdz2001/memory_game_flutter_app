@@ -41,13 +41,13 @@ class _HomePageState extends State<HomePage> {
 
   List<DashboardItemModel> dashboardItems = const [
     DashboardItemModel(
-      title: 'Games', value: '10', bgColor: Color(0xffe3e4fd), icon: Icons.gamepad_rounded
+      title: 'Games', value: '10', bgColor: Color.fromARGB(255, 94, 99, 255), icon: Icons.videogame_asset_rounded
     ),
     DashboardItemModel(
-      title: 'Wins', value: '2', bgColor: Color(0xffe3e4fd), icon: Icons.star_rounded
+      title: 'Wins', value: '2', bgColor: Color.fromARGB(255, 98, 231, 86), icon: Icons.diamond_rounded
     ),
     DashboardItemModel(
-      title: 'Losses', value: '8', bgColor: Color(0xffe3e4fd), icon: Icons.dangerous_rounded
+      title: 'Losses', value: '8', bgColor: Color.fromARGB(255, 233, 86, 86), icon: Icons.dangerous_rounded
     ),
   ];
 
@@ -59,19 +59,29 @@ class _HomePageState extends State<HomePage> {
     return CustomScaffoldWithHeader(
       title: 'Educational Memory Game', 
       subTitle: 'Start your game to start learning...',
+      withScroll: true,
       getWidgets: (resp) {
         return [
+          Container(
+            height: resp.hp(30),
+            decoration: const BoxDecoration(
+              color: containerBG,
+              borderRadius: BorderRadius.all(Radius.circular(10))
+            ),
+            child: Image.asset('$illustrationsPath/home_image.png'),
+          ),
+
           Text('Dashboard:', textAlign: TextAlign.center, style: TextStyles.w500(resp.dp(2.5))),
           FlexibleGridView(
             crossAxisCount: 3,
-            items: dashboardItems.map((i) => DashboardContainer(bgColor: containerBG, title: i.title, value: i.value, icon: i.icon)).toList()
+            items: dashboardItems.map((i) => DashboardContainer(bgColor: i.bgColor, title: i.title, value: i.value, icon: i.icon)).toList()
           ),
 
           // Categories Containers
           Text('Categories:', textAlign: TextAlign.center, style: TextStyles.w500(resp.dp(2.5))),
           FlexibleGridView(
-            items: categoriesProvider.categories.map((c) => CategoryContainer(category: c)).toList(),
             crossAxisCount: 2,
+            items: categoriesProvider.categories.map((c) => CategoryContainer(category: c)).toList()
           ),
         ];
       },

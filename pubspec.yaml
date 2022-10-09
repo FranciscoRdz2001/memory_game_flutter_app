@@ -57,6 +57,7 @@ flutter:
     - assets/images/categories/animals/
     - assets/images/categories/states/
     - assets/images/questionAndCorrect/
+    - assets/images/illustrations/
     - assets/images/icons/
   #   - images/a_dot_ham.jpeg
 
