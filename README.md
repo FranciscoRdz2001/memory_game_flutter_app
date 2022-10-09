@@ -1,20 +1,32 @@
-<<<<<<< HEAD
-# memory_game_flutter_app
-=======
-# memoram_app
 
-A new Flutter project.
+![Logo](https://i.imgur.com/ilULnlC.png)
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+# Educational Memory Game
 
-A few resources to get you started if this is your first Flutter project:
+This game uses Provider to handle states.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
->>>>>>> a8dda67 (First commit: Ready to migrate)
+
+## Demo
+![Alt Text](https://media.giphy.com/media/NJYdBLYbjA60dViq5M/giphy.gif)
+## Screenshots
+
+Home Page             |  When the category is selected
+:-------------------------:|:-------------------------:
+![](https://i.imgur.com/43cel2z.png)  |  ![](https://i.imgur.com/ZwnFS4i.png)
+Game Configuration Page             |  Game Page
+![](https://i.imgur.com/kJmQlhT.png)  |  ![](https://i.imgur.com/mkTHwWg.png)
+
+
+## Installation
+
+Install this project
+
+```bash
+  git clone https://github.com/FranciscoRdz2001/memory_game_flutter_app.git
+  cd memory_game_flutter_app
+  flutter pub get
+  flutter run
+```
+    
