@@ -1,11 +1,11 @@
+import 'package:provider/provider.dart';
+
 import 'package:memoram_app/src/core/utils/constants.dart';
 import 'package:memoram_app/src/core/utils/custom_animation.dart';
-import 'package:memoram_app/src/core/utils/responsive.dart';
 import 'package:memoram_app/src/presentation/views/game_page.dart';
 import 'package:memoram_app/src/presentation/widgets/custom_category_image_container.dart';
 import 'package:memoram_app/src/presentation/widgets/custom_scaffold_with_header.dart';
 import 'package:memoram_app/src/provider/game_logic_provider.dart';
-import 'package:provider/provider.dart';
 
 class GameConfigurationPage extends StatefulWidget {
 
@@ -49,11 +49,8 @@ class _GameConfigurationPageState extends State<GameConfigurationPage> with Sing
   Widget build(BuildContext context) {
 
     final GameLogicProvider logicProvider = Provider.of<GameLogicProvider>(context);
-    final ResponsiveUtil resp = ResponsiveUtil.of(context);
 
     final String imagePath = '$iconsImagesPath/${logicProvider.category.icon}.png';
-
-    final yBodyPosition = resp.hp(20) * (1 - _startAnimation.value);
 
     return CustomScaffoldWithHeader(
       title: logicProvider.category.title, 
@@ -65,6 +62,9 @@ class _GameConfigurationPageState extends State<GameConfigurationPage> with Sing
         category: logicProvider.category,
       ),
       getWidgets: (resp) {
+
+        final yBodyPosition = resp.hp(20) * (1 - _startAnimation.value);
+
         return [
           Transform.translate(
             offset: Offset(0, yBodyPosition),

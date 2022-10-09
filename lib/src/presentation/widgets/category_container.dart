@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:memoram_app/src/core/utils/constants.dart';
 import 'package:memoram_app/src/data/models/category_model.dart';
 import 'package:memoram_app/src/presentation/views/category_splash_page.dart';
-import 'package:memoram_app/src/presentation/views/game_configuration_page.dart';
 import 'package:memoram_app/src/presentation/widgets/custom_category_image_container.dart';
 import 'package:memoram_app/src/provider/game_logic_provider.dart';
-import 'package:provider/provider.dart';
-import '../../core/utils/styles.dart';
-import '../../core/utils/responsive.dart';
 
+import '../../core/utils/responsive.dart';
+import '../../core/utils/styles.dart';
 
 class CategoryContainer extends StatelessWidget {
   

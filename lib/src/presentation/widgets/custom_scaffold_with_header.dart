@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:memoram_app/src/core/utils/responsive.dart';
 
 import '../../core/utils/styles.dart';
 
-export 'package:flutter/material.dart';
 export '../../core/utils/styles.dart';
+export 'package:flutter/material.dart';
 
 class CustomScaffoldWithHeader extends StatelessWidget {
 

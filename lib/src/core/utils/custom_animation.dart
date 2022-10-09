@@ -1,7 +1,4 @@
-
-
-
-import 'package:memoram_app/src/presentation/widgets/custom_scaffold_with_header.dart';
+import 'package:flutter/material.dart';
 
 class CustomAnimation{
 
@@ -27,7 +24,7 @@ class CustomAnimation{
     _controller = AnimationController(vsync: tickerProvider, duration: duration);
     _animation = Tween<double>(begin: start, end: end).animate(CurvedAnimation(
         parent: _controller,
-        curve: Curves.ease,
+        curve: Curves.easeInOutCubic,
       ))
       ..addListener(animationListener!);
 

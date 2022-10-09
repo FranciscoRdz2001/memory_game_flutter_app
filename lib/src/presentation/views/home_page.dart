@@ -39,18 +39,6 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  List<DashboardItemModel> dashboardItems = const [
-    DashboardItemModel(
-      title: 'Games', value: '10', bgColor: Color.fromARGB(255, 94, 99, 255), icon: Icons.videogame_asset_rounded
-    ),
-    DashboardItemModel(
-      title: 'Wins', value: '2', bgColor: Color.fromARGB(255, 98, 231, 86), icon: Icons.diamond_rounded
-    ),
-    DashboardItemModel(
-      title: 'Losses', value: '8', bgColor: Color.fromARGB(255, 233, 86, 86), icon: Icons.dangerous_rounded
-    ),
-  ];
-
   @override
   Widget build(BuildContext context){
 

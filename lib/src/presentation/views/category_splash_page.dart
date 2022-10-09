@@ -1,19 +1,17 @@
-import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:memoram_app/src/core/utils/constants.dart';
 import 'package:memoram_app/src/core/utils/custom_animation.dart';
 import 'package:memoram_app/src/core/utils/responsive.dart';
 import 'package:memoram_app/src/core/utils/styles.dart';
 import 'package:memoram_app/src/data/models/category_model.dart';
 import 'package:memoram_app/src/presentation/views/game_configuration_page.dart';
-import 'package:memoram_app/src/presentation/views/game_page.dart';
 import 'package:memoram_app/src/presentation/widgets/flexible_grid_view.dart';
 import 'package:memoram_app/src/presentation/widgets/image_container.dart';
 import 'package:memoram_app/src/provider/game_logic_provider.dart';
-import 'package:provider/provider.dart';
-
 
 class CategorySpashPage extends StatefulWidget {
 
